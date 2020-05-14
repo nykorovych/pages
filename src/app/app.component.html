@@ -4,27 +4,49 @@
 
 <nav>
   <ul class="pagination">
-    <li class="page-item"   [ngClass]="{ disabled: currentPage === 0}">
+    <li class="page-item"   [appClass]="{ disabled: currentPage === 0}">
       <a (click)="currentPage = currentPage -1" class="page-link">Previous</a>
     </li>
-    <ng-container *ngFor="let image of images; let i = index">
+    <ng-container *appTimes="images.length; let i = numberOf">
       <li class="page-item"
         *ngIf = "checkWindowIndex(i)"
-        [ngClass]="{active: currentPage === i}"
+        [appClass]="{active: currentPage === i}"
         > 
         <a (click)= "currentPage = i" class="page-link " >{{ i + 1 }}</a>
       </li>
   </ng-container>
     <li class="page-item"
-       [ngClass]="{disabled: currentPage == images.length - 1}">
+       [appClass]="{disabled: currentPage === images.length - 1}">
       <a (click)="currentPage = currentPage +1" class="page-link">Next</a>
     </li>
   </ul>
 </nav>
 
 <div>
-  <h4 appClass [background] = "'red'">
+  <h4 >
     {{images[currentPage].title}}
   </h4>
   <img [src]="images[currentPage].url"/>
 </div>
+
+
+
+
+<
+  <!-- FIRST EXAMPLE 11***************************************************************************** -->
+
+<!-- 
+<div>
+  <h4  [appClass] = "'green'">
+    {{images[currentPage].title}}
+  </h4>
+  <img [src]="images[currentPage].url"/>
+</div> -->
+
+  <!-- SECOND EXAMPLE 11***************************************************************************** -->
+<!-- <div>
+  <h4 appClass [background] = "'green'">
+    {{images[currentPage].title}}
+  </h4>
+  <img [src]="images[currentPage].url"/>
+</div> -->
